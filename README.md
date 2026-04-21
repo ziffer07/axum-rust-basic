@@ -20,3 +20,9 @@ To run this app locally one must
         4. Run ``` cargo build ```
         5. Run ``` cargo run ```. You can open the url which will run on the port mentioned in main.rs
         6. Instead of running, you can also test the code using ``` cargo test ``` this will run tests.rs file
+
+
+New Functionality: 
+        1. The echo post form can now take 3 inputs as text, number 1 and number 2. 
+        2. The inputed values and their sum is displayed when post request is made and form is submitted
+        3. TODO: Updating the UI and exploring more ways to update the form
