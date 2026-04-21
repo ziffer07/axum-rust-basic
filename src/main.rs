@@ -39,7 +39,9 @@ struct PostTemplate {}
 #[derive(Template)]
 #[template(path = "../templates/echo_post.html")]
 struct EchoPostTemplate {
-    text_in: String,
+    name_in: String,
+    number_one_in: u32,
+    number_two_in: u32,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -47,6 +49,15 @@ struct EchoPostTemplate {
 struct Params {
     text: String,
 }
+
+#[derive(Serialize, Deserialize)]
+#[allow(dead_code)]
+struct ParamsCalc {
+    name: String,
+    number_one: u32,
+    number_two: u32,
+}
+
 
 // Get instruction
 async fn main_page() -> impl IntoResponse {
@@ -77,9 +88,11 @@ async fn post_form() -> impl IntoResponse {
     HtmlTemplate(template)
 }
 
-async fn echo_post(Form(input): Form<Params>) -> impl IntoResponse {
+async fn echo_post(Form(input): Form<ParamsCalc>,) -> impl IntoResponse {
     let template =  EchoPostTemplate {
-        text_in: input.text,
+        name_in: input.name,
+        number_one_in: input.number_one,
+        number_two_in: input.number_two,
     };
     HtmlTemplate(template)
 }
@@ -92,9 +105,9 @@ fn create_router() -> Router {
         .route("/post-form", get(post_form))
         .route("/echo-post", post(echo_post))
         .route("/post-form-redirect", get(go_to_post))
-        
 
 }
+
 
 #[tokio::main]
 async fn main() {

@@ -1,6 +1,10 @@
 <a href="/home_redirect">Home</a>
 {% include "incl/echo_post_form.html" %}
 
-You wrote: <b>{{ text_in }}</b> <br/>
+Name: <b>{{ name_in }}</b> <br/>
+Number 1: <b>{{ number_one_in }}</b> <br/>
+Number 2: <b>{{ number_two_in }}</b> <br/>
+
+Sum = <b>{{ number_one_in + number_two_in }}</b>
 
 <input type="submit" value="Redeem"/>
